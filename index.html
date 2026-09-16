@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ali Coin (ALIC)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.6;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  header { text-align: center; padding: 40px 0; }
+  h1 {
+    font-size: 3.5rem;
+    color: #fbbf24;
+    margin: 0 0 10px;
+  }
+  .ticker {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    letter-spacing: 0.3em;
+  }
+  .tagline {
+    color: #cbd5e1;
+    margin-top: 20px;
+  }
+  section {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+  }
+  h2 { color: #fbbf24; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 0; border-bottom: 1px solid #334155; }
+  td:first-child { color: #94a3b8; }
+  td:last-child { color: #f1f5f9; font-family: monospace; }
+  code { background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #7dd3fc; }
+  pre { background: #0f172a; padding: 15px; border-radius: 8px; overflow-x: auto; }
+  a { color: #7dd3fc; }
+  .btn {
+    display: inline-block;
+    background: #fbbf24;
+    color: #0f172a;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  .warning {
+    background: rgba(251,191,36,0.1);
+    border: 1px solid rgba(251,191,36,0.4);
+    padding: 12px;
+    border-radius: 8px;
+    color: #fbbf24;
+  }
+  footer { text-align: center; color: #64748b; padding: 30px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Ali Coin</h1>
+    <div class="ticker">ALIC</div>
+    <p class="tagline">A Bitcoin Core fork with a 100,000 ALIC founder pre-mine at block 101.</p>
+    <a class="btn" href="https://github.com/jamesxavier31/ali-coin">View on GitHub</a>
+  </header>
+
+  <section>
+    <h2>Specifications</h2>
+    <table>
+      <tr><td>Name</td><td>Ali Coin</td></tr>
+      <tr><td>Ticker</td><td>ALIC</td></tr>
+      <tr><td>Fork of</td><td>Bitcoin Core v32.99.0</td></tr>
+      <tr><td>P2P Port</td><td>9333</td></tr>
+      <tr><td>RPC Port</td><td>9332</td></tr>
+      <tr><td>Network Magic</td><td>0x41 0x4c 0x49 0x43</td></tr>
+      <tr><td>Block Reward</td><td>50 ALIC</td></tr>
+      <tr><td>Halving Interval</td><td>210,000 blocks</td></tr>
+      <tr><td>Block Time</td><td>10 minutes</td></tr>
+      <tr><td>Total Supply</td><td>21,100,000 ALIC</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Pre-mine</h2>
+    <p><strong>100,000 ALIC</strong> is paid out at <strong>block 101</strong> to the miner of that block. Implemented in <code>src/validation.cpp</code>.</p>
+    <div class="warning">This project has not been audited. Use at your own risk.</div>
+  </section>
+
+  <section>
+    <h2>Build from Source</h2>
+    <pre><code>git clone https://github.com/bitcoin/bitcoin.git ali-coin
+cd ali-coin
+git checkout d25470d992b7
+
+cp feerate.h src/policy/feerate.h
+cp chainparams.cpp src/kernel/chainparams.cpp
+cp chainparamsbase.cpp src/chainparamsbase.cpp
+cp validation.cpp src/validation.cpp
+
+cmake -B build -DBUILD_GUI=OFF -DBUILD_TESTS=OFF -DENABLE_IPC=OFF
+cmake --build build -j4</code></pre>
+  </section>
+
+  <section>
+    <h2>Status</h2>
+    <table>
+      <tr><td>Daemon</td><td>Working</td></tr>
+      <tr><td>Blocks mined</td><td>201+</td></tr>
+      <tr><td>Pre-mine confirmed</td><td>Yes</td></tr>
+      <tr><td>Transactions</td><td>Working</td></tr>
+      <tr><td>Security audit</td><td>Not performed</td></tr>
+    </table>
+  </section>
+
+  <footer>Ali Coin (ALIC) &middot; MIT License</footer>
+
+</div>
+</body>
+</html>
