@@ -1,0 +1,46 @@
+========== ALI COIN — PROJECT REFERENCE ==========
+
+NAME:           Ali Coin
+TICKER:         ALIC
+CLIENT:         Ali Core (Bitcoin Core v32.99.0 fork)
+
+NETWORK:
+  P2P port:      9333
+  RPC port:      9332
+  Magic bytes:   0x41 0x4c 0x49 0x43  (ALIC)
+
+GENESIS:
+  Timestamp:     1735689600
+  Nonce:         241772
+  nBits:         0x1e0ffff0
+  Block Hash:    000002e6c7e9c9d3c978e3d41d0689aafb813b7550cd8de62570cf0a1d04c766
+  Merkle Root:   18a60fcbe9a8756dbb39e3385fc8036cb2af48d7bf2e376a041bcef7883a496a
+
+FOUNDER PUBKEY:
+  040032bb806e8b15c7322be999fdbc0f8851710da0dc10e7577504eba7d92ecafc5ffb43fe3262522e708b97991a0bb2b45a29fc475f9d481438df81216b808f43
+
+ECONOMICS:
+  Block reward:      50 ALIC
+  Halving interval:  210,000 blocks (~4 years)
+  Block time:        10 minutes
+  Mining supply:     21,000,000 ALIC
+  Pre-mine:          100,000 ALIC at block 101
+  TOTAL SUPPLY:      21,100,000 ALIC
+
+PROVEN WORKING (regtest):
+  - Mined 201 blocks
+  - Block 101 paid 100,000 ALIC pre-mine
+  - Balance: 105,000 ALIC
+  - Sent 1,000 ALIC transaction successfully
+
+KEY FILES MODIFIED:
+  src/policy/feerate.h        → CURRENCY_UNIT = "ALIC"
+  src/kernel/chainparams.cpp  → magic, port, genesis, pubkey
+  src/chainparamsbase.cpp     → RPC port 9332
+  src/validation.cpp          → pre-mine at block 101
+
+COMMANDS:
+  Build:    cd ~/ali-coin && cmake --build build -j$(nproc)
+  Start:    ./build/bin/bitcoind -regtest -daemon -fallbackfee=0.0001
+  RPC:      ./build/bin/bitcoin-cli -regtest getblockchaininfo
+  Stop:     ./build/bin/bitcoin-cli -regtest stop
